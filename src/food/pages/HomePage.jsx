@@ -1,9 +1,11 @@
-import {FoodCategoryList} from "../components/FoodCategoryList.jsx";
+import {HomeSlider, HomeSectionOne, HomeMostSeller} from "../components";
 
 export const HomePage = () => {
     return (
         <>
-            <FoodCategoryList category={"vegan"} />
+           <HomeSlider />
+           <HomeSectionOne />
+           <HomeMostSeller category= "vegan" />
         </>
     );
 }

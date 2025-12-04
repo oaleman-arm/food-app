@@ -12,7 +12,7 @@ export const Navbar = () => {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-2">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-navbar p-2">
             <div className="container-fluid">
                 <Link
                     className="navbar-brand"
@@ -26,40 +26,46 @@ export const Navbar = () => {
 
                         <NavLink
                             className={({isActive}) => `nav-item nav-link  ${isActive ? 'active' : ''}`}
-                            to="/marvel"
+                            to="/vegetales"
                         >
                             Vegetales
                         </NavLink>
 
                         <NavLink
                             className={({isActive}) => `nav-item nav-link  ${isActive ? 'active' : ''}`}
-                            to="/dc"
+                            to="/frutos"
                         >
                             Frutos
                         </NavLink>
 
                         <NavLink
                             className={({isActive}) => `nav-item nav-link  ${isActive ? 'active' : ''}`}
-                            to="/dc"
+                            to="/semillas"
                         >
                             Semillas
                         </NavLink>
 
-                        <NavLink
-                            className={({isActive}) => `nav-item nav-link  ${isActive ? 'active' : ''}`}
-                            to="/search"
-                        >
-                            Buscar
-                        </NavLink>
+
                     </div>
                 </div>
 
                 <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
                     <ul className="navbar-nav ml-auto">
 
-                    <span className="nav-item nav-link text-primary">
-                        User
-                    </span>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Buscar producto..."
+                            onChange={(e) => { console.log(e.target.value); }}
+                        />
+
+                        {/*agregar icono de carrito de compras*/}
+                        <NavLink
+                            className={({isActive}) => `nav-item nav-link  ${isActive ? 'active' : ''}`}
+                            to="/cart"
+                        >
+                            <i className="fas fa-shopping-cart"></i>
+                        </NavLink>
 
                         <button
                             className="nav-item nav-link btn"

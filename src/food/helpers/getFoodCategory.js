@@ -9,12 +9,10 @@ export const getFoodCategory = async (category) => {
         console.log(products);
 
         const foodsCategory = products.map(food => ({
-            id: food.id ?? food._id ?? null,
             name: food.product_name ?? '',
             image: food.image_url ?? '',
-            category: food.categories ?? '',
-            labels: food.labels ?? '',
-            ingredients: food.ingredients_text ?? '',
+            brands: food.brands ?? '',
+            packaging: [food.product_quantity, food.product_quantity_unit].filter(v => v != null && v !== '').join(' '),
             code: food.code ?? '',
         }));
 
