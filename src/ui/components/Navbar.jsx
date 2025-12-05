@@ -52,12 +52,23 @@ export const Navbar = () => {
                 <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
                     <ul className="navbar-nav ml-auto">
 
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Buscar producto..."
-                            onChange={(e) => { console.log(e.target.value); }}
-                        />
+                         <form className="d-flex align-items-center" onSubmit={ {/*onSearchSubmit*/} }>
+                             <input
+                                 type="text"
+                                 placeholder="Search a hero"
+                                 className="form-control me-2"
+                                 name="searchText"
+                                 autoComplete="off"
+                                 /* value={ searchText }*/
+                                 /* onChange={ onInputChange }*/
+                             />
+
+                             <button className="btn btn-outline-primary">
+                                 Search
+                             </button>
+                         </form>
+
+
 
                         {/*agregar icono de carrito de compras*/}
                         <NavLink

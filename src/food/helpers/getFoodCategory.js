@@ -6,14 +6,17 @@ export const getFoodCategory = async (category) => {
         const json = await resp.json();
 
         const products = json.products || [];
-        console.log(products);
+       // console.log(products);
 
         const foodsCategory = products.map(food => ({
+            id: food.id ?? food.code ?? Math.random().toString(36).substring(2, 15),
             name: food.product_name ?? '',
             image: food.image_url ?? '',
             brands: food.brands ?? '',
             packaging: [food.product_quantity, food.product_quantity_unit].filter(v => v != null && v !== '').join(' '),
             code: food.code ?? '',
+            // Random price for demonstration less than $100
+            price: food.ecoscore_score != null ? (Math.abs(food.ecoscore_score) % 100).toFixed(2) : 11.99,
         }));
 
         return foodsCategory;

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Barcode from 'react-barcode';
-export const FoodItem = ({name, image, brands, packaging ,code}) => {
+export const FoodItem = ({name, image, brands, packaging, price,code}) => {
     return (
         <div className="col animate__animated animate__fadeIn">
             <div id="cardFoodItem" className="card">
@@ -9,6 +9,7 @@ export const FoodItem = ({name, image, brands, packaging ,code}) => {
                             <h5 className="card-title text-truncate text-uppercase" title={name}>{name}</h5>
                             <p className="card-text text-truncate text-uppercase"><strong>Empaque: </strong>{packaging}</p>
                             <p className="card-text text-truncate text-uppercase"><strong>Marca: </strong>{brands}</p>
+                            <p className="card-text text-truncate text-uppercase"><strong>Precio: </strong>$ {price}</p>
                             <p className="card-text"><strong>Codigo: </strong>{code}</p>
                             {code ? (
                                 <div style={{ margin: '8px 0' }}>

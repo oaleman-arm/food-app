@@ -11,7 +11,7 @@ export const FoodCategoryList = ({category}) => {
             <div className="row rows-cols-1 row-cols-md-4 g-3">
                 {
                     foodCategory.map( (food) => (
-                        <FoodItem key={food.code} { ...food } />
+                        <FoodItem key={food.id} { ...food } />
                     ))
                 }
             </div>
