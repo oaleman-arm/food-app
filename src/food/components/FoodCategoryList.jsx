@@ -1,17 +1,26 @@
-import {useFetchFoodCategory} from "../hooks/useFetchFoodCategory";
-import {FoodItem} from "./FoodItem";
-export const FoodCategoryList = ({category}) => {
-    const {foodCategory, isLoading} = useFetchFoodCategory(category);
+import {useFilteredFood} from "../hooks/useFilteredFood";
+import {FoodItem,SearchInput} from "./index";
+
+export const FoodCategoryList = ({category, addCart}) => {
+    const { filteredFood, name, setName, isLoading } = useFilteredFood(category);
+
     return (
         <>
-            {
-                isLoading && (<h2>Loading...</h2>)
-            }
             <div className="container">
-            <div className="row rows-cols-1 row-cols-md-4 g-3">
+                <div className="col-6 text-center mx-auto mb-3 mt-3">
+                    <SearchInput value={name} onChange={setName} />
+                </div>
                 {
-                    foodCategory.map( (food) => (
-                        <FoodItem key={food.id} { ...food } />
+                    isLoading && (<h2 className="text-center mt-3">Loading...</h2>)
+                }
+                {
+                    (filteredFood.length === 0 && !isLoading)
+                    && (<h3 className="text-center mt-3">No se encontro producto "{name}"</h3>)
+                }
+            <div className="row row-cols-1 row-cols-md-4 g-3">
+                {
+                    filteredFood.map( (food) => (
+                        <FoodItem key={food.id} { ...food } addCart={addCart}   />
                     ))
                 }
             </div>

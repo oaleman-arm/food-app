@@ -1,6 +1,17 @@
 import { Link } from 'react-router-dom';
 import Barcode from 'react-barcode';
-export const FoodItem = ({name, image, brands, packaging, price,code}) => {
+export const FoodItem = ({name, image, brands, packaging, price,code,addCart = () => {}}) => {
+    const handleAdd = () => {
+        if (typeof addCart === 'function') {
+            addCart({ name, code, price });
+        } else {
+            // helpful debug info when the prop is wrong
+            // remove or change to a logger in production
+            // eslint-disable-next-line no-console
+           // console.warn('addCart is not a function', addCart);
+        }
+    };
+
     return (
         <div className="col animate__animated animate__fadeIn">
             <div id="cardFoodItem" className="card">
@@ -26,9 +37,7 @@ export const FoodItem = ({name, image, brands, packaging, price,code}) => {
                             )}
                         </div>
                         <div className="card-footer">
-                            <Link to={`/food/${code}`}>
-                                <span className="btn btn-outline-primary">Agregar</span>
-                            </Link>
+                            <input type="button" value="Agregar" className="btn btn-outline-primary" onClick={handleAdd} />
                         </div>
                 </div>
             </div>

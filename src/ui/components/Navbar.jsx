@@ -1,9 +1,11 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-
+import {useCart} from "../../food/context/CartContext";
 
 export const Navbar = () => {
 
     const navigate = useNavigate();
+
+    const {totalItems} = useCart();
 
     const onLogout = () => {
         navigate('/login', {
@@ -12,7 +14,7 @@ export const Navbar = () => {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-navbar p-2">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-navbar p-2 fixed-top">
             <div className="container-fluid">
                 <Link
                     className="navbar-brand"
@@ -45,38 +47,16 @@ export const Navbar = () => {
                             Semillas
                         </NavLink>
 
-
                     </div>
                 </div>
 
                 <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
                     <ul className="navbar-nav ml-auto">
 
-                         <form className="d-flex align-items-center" onSubmit={ {/*onSearchSubmit*/} }>
-                             <input
-                                 type="text"
-                                 placeholder="Search a hero"
-                                 className="form-control me-2"
-                                 name="searchText"
-                                 autoComplete="off"
-                                 /* value={ searchText }*/
-                                 /* onChange={ onInputChange }*/
-                             />
-
-                             <button className="btn btn-outline-primary">
-                                 Search
-                             </button>
-                         </form>
-
-
-
-                        {/*agregar icono de carrito de compras*/}
-                        <NavLink
-                            className={({isActive}) => `nav-item nav-link  ${isActive ? 'active' : ''}`}
-                            to="/cart"
-                        >
+                        <button className="nav-item nav-link btn">
                             <i className="fas fa-shopping-cart"></i>
-                        </NavLink>
+                            <span className="badge">{totalItems}</span>
+                        </button>
 
                         <button
                             className="nav-item nav-link btn"
