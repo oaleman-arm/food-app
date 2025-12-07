@@ -1,7 +1,7 @@
+import {useNavigate} from "react-router-dom";
 
 export const LoginPage = () => {
     const navigate = useNavigate();
-
     const onLogin = () => {
         navigate('/', {
             replace: true
@@ -17,8 +17,10 @@ export const LoginPage = () => {
                 className="btn btn-primary"
                 onClick={ onLogin }
             >
-                Login
+                Ingresar
             </button>
+            <hr />
+            <h2>Esta pagina esta en construccion...</h2>
 
         </div>
     )
