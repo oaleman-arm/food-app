@@ -1,15 +1,11 @@
 import { Link } from 'react-router-dom';
 import Barcode from 'react-barcode';
-export const FoodItem = ({name, image, brands, packaging, price,code,addCart = () => {}}) => {
+import { useCart } from '../context/UseCart';
+export const FoodItem = ({id, name, image, brands, packaging, price,code = () => {}}) => {
+    const { addToCart } = useCart();
+
     const handleAdd = () => {
-        if (typeof addCart === 'function') {
-            addCart({ name, code, price });
-        } else {
-            // helpful debug info when the prop is wrong
-            // remove or change to a logger in production
-            // eslint-disable-next-line no-console
-           // console.warn('addCart is not a function', addCart);
-        }
+        addToCart({ id, name, image, brands, packaging, price, code });
     };
 
     return (

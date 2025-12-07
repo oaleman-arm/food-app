@@ -1,5 +1,6 @@
 import {HomeSlider, HomeSectionOne, HomeMostSeller} from "../components";
-import {useCart} from "../context/CartContext.jsx";
+
+import {useCart} from "../context/UseCart.jsx";
 
 export const HomePage = () => {
     const {addToCart} = useCart();
